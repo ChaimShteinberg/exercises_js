@@ -24,3 +24,24 @@ function Rectangle(width, height){
 const myRectangle = new Rectangle(5, 4);
 console.log(myRectangle.area());
 
+// EXercise 3 - BankAccount
+
+function BankAccount(owner, balance){
+    this.owner = owner;
+    this.balance = balance;
+    this.deposit = function(amount){
+        this.balance += amount;
+    }
+    this.withdraw = function(amount){
+        this.balance -= amount;
+    }
+    this.checkBalance = function(){
+        console.log(`Balance: ${this.balance}`);
+        
+    }
+}
+
+const myBankAccount = new BankAccount("Chaim", 1000);
+myBankAccount.deposit(500);
+myBankAccount.withdraw(200);
+myBankAccount.checkBalance();
