@@ -45,3 +45,27 @@ const myBankAccount = new BankAccount("Chaim", 1000);
 myBankAccount.deposit(500);
 myBankAccount.withdraw(200);
 myBankAccount.checkBalance();
+
+// Exercise 4 - Animal & Dog
+
+class Animal{
+    constructor(name){
+        this.name = name;
+        this.speak = function(){
+            console.log(`${this.name} makes a sound`);            
+        }
+    }
+}
+
+class Dog extends Animal{
+    constructor(name){
+        super(name);
+        this.bark = function(){
+            console.log(`${this.name} barks`);            
+        }
+    }
+}
+
+const myDog = new Dog("Rocky");
+myDog.speak();
+myDog.bark();
