@@ -90,3 +90,50 @@ Object.setPrototypeOf(myCar, myVehicle);
 
 myCar.describe();
 myCar.info();
+
+// Exercise 6 - Shape Polymorphism
+
+function Shape(){
+    this.area = function(){
+        return 0;
+    }
+}
+
+function Circle(radius){
+    this.radius = radius;
+    this.area = function(){
+        return Math.PI * this.radius ** 2;
+    }
+}
+
+function Square(side){
+    this.side = side;
+    this.area = function(){
+        return this.side ** 2;
+    }
+}
+
+const myShape = new Shape;
+const myCircle = new Circle(3);
+const mySquare = new Square(4);
+
+Object.setPrototypeOf(myCircle, myShape);
+Object.setPrototypeOf(mySquare, myShape);
+
+console.log(myCircle.area());
+console.log(mySquare.area());
+
+// Exercise 7 - Book
+
+class Book{
+    constructor(title, author){
+        this.title = title;
+        this.author = author;
+    }
+    info(){
+        console.log(`${this.title} by ${this.author}`);        
+    }
+}
+
+const myBook = new Book("The Hobbit", "Tolkien");
+myBook.info();
