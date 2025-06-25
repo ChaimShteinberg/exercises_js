@@ -159,6 +159,36 @@ class Student extends Person{
     }
 }
 
-const myStudent = new Student("Alice", "Oxford");
-myStudent.greet();
-myStudent.study();
+const newStudent = new Student("Alice", "Oxford");
+newStudent.greet();
+newStudent.study();
+
+// Exercise 9 - Employee & Manager (Polymorphism + Private Fields)
+
+class Employee{
+    #salary
+    constructor(salary){
+        this.#salary = salary;
+    }
+    getSalary(){
+        return this.#salary;
+    }
+    work(){
+        console.log("Employee is working");
+        
+    }
+}
+
+class Manager extends Employee{
+    work(){
+        console.log("Manager is managing");
+        
+    }
+}
+
+const newEmployee = new Employee(4000);
+console.log(newEmployee.getSalary());
+newEmployee.work();
+const newManager = new Manager(5000);
+console.log(newManager.getSalary());
+newManager.work();
