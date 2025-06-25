@@ -48,24 +48,45 @@ myBankAccount.checkBalance();
 
 // Exercise 4 - Animal & Dog
 
-class Animal{
-    constructor(name){
-        this.name = name;
-        this.speak = function(){
-            console.log(`${this.name} makes a sound`);            
-        }
+function Animal(name){
+    this.name = name;
+    this.speak = function(){
+        console.log(`${this.name} makes a sound`);
     }
 }
 
-class Dog extends Animal{
-    constructor(name){
-        super(name);
-        this.bark = function(){
-            console.log(`${this.name} barks`);            
-        }
+function Dog(name){
+    this.name = name;
+    this.bark = function(){
+        console.log(`${this.name} barks`);
     }
 }
 
+const myAnimal = new Animal("animal")
 const myDog = new Dog("Rocky");
+Object.setPrototypeOf(myDog, myAnimal)
 myDog.speak();
 myDog.bark();
+
+// Exercise 5 - Vehicle & Car
+
+function Vehicle(type){
+    this.type = type;
+    this.describe = function(){
+        console.log(`This is a ${type}`);        
+    }
+}
+
+function Car(brand){
+    this.brand = brand;
+    this.info = function(){
+        console.log(`This is a ${this.brand} ${this.type}`);        
+    }
+}
+
+const myVehicle = new Vehicle("car");
+const myCar = new Car("BMW");
+Object.setPrototypeOf(myCar, myVehicle);
+
+myCar.describe();
+myCar.info();
