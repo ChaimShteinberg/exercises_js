@@ -137,3 +137,28 @@ class Book{
 
 const myBook = new Book("The Hobbit", "Tolkien");
 myBook.info();
+
+// Exercise 8 - Person & Student
+
+class Person{
+    constructor(name){
+        this.name = name;
+    }
+    greet(){
+        console.log(`Hello, I'm ${this.name}`);        
+    }
+}
+
+class Student extends Person{
+    constructor(name, school){
+        super(name);
+        this.school = school;
+    }
+    study(){
+        console.log(`${this.name} is studying at ${this.school}`);        
+    }
+}
+
+const myStudent = new Student("Alice", "Oxford");
+myStudent.greet();
+myStudent.study();
