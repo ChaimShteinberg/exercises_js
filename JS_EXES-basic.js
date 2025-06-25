@@ -22,7 +22,7 @@ for (let i = 0; i < metrix.length; i++) {
     for (let j = 0; j < metrix[i].length; j++) {
         if (metrix[i][j].toLowerCase() === "x"){
             counter++;
-        }        
+        }
     }    
 }
 
@@ -68,7 +68,7 @@ const types = {
     obj: 0,
     bool: 0, 
     nulls: 0
-}
+};
 
 for (let i = 0; i < typeArray.length; i++) {
     
@@ -77,20 +77,9 @@ for (let i = 0; i < typeArray.length; i++) {
     switch (theType) {
         case "number": types.num++; break;        
         case "string": types.str++; break;   
-        case "object":
-            typeArray[i] === null? types.nulls++: types.obj++; 
-            // if (typeArray[i] === null) {
-            //     types.nulls++;
-            // }
-            // else{
-            //     types.obj++; 
-            // }
-            break;
-        case "boolean": types.bool++; break;
-        // case "undefined": types.nulls++; break;
-    
-        default:
-            break;
+        case "object": typeArray[i] === null? types.nulls++: types.obj++; break;
+        case "boolean": types.bool++; break;  
+        default: break;
     }
 }
 
@@ -98,6 +87,18 @@ const keys = Object.keys(types);
 const values = Object.values(types);
 
 for (let i = 0; i < keys.length; i++) {
-    console.log(`${keys[i]}: ${values[i]}`)    
+    console.log(`${keys[i]}: ${values[i]}`);
 }
 
+// Section 6
+
+const nums = [1, 20, 27, 112, 13, 50, 127, 86, 77, 138, 1095, 531, 613, 15];
+const bigNums = [];
+
+for (let i = 0; i < nums.length; i++){
+    if (nums[i] >= 100){
+        bigNums.push(nums[i]);
+    }
+}
+
+console.log(bigNums);
