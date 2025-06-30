@@ -2,18 +2,28 @@
 
 // Exercise 1: File Reader with Stats
 
-const fs = require("fs")
+const { readFile, stat } = require("fs")
 
 const file = {}
 
-fs.readFile("file.txt", "utf-8", (err , data) => {
-    if (err){
-        console.log(err);
-        return
-    }
-    file.FileContent = data
-    console.log(file);
-})
+new Promise((resolve, reject) => {
+    readFile("file.txt", "utf-8", (err , data) => {
+        if (err){
+            console.log(err);
+            reject(err)
+        }
+        file["File Content"] = data;
+        stat("file.txt", (err , data) => {
+        if (err){
+            console.log(err);
+            reject(err)
+        }
+        file["size"] = data.size;
+        file["Created At"] = data.birthtimeMs;
+        resolve(file)
+    })})})
+    .then(obj => console.log(obj))
+    .catch(err => console.log(err))
 
 // Exercise 2: Directory Files Only
 
