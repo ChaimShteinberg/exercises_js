@@ -1,47 +1,47 @@
 const { readFile, stat, readdir } = require("fs");
 const path = require("path");
 
-// // Exercise 1: File Reader with Stats
+// Exercise 1: File Reader with Stats
 
-// const file = {}
+const file = {}
 
-// new Promise((resolve, reject) => {
-//     readFile("file.txt", "utf-8", (err , data) => {
-//         if (err){
-//             console.log(err);
-//             reject(err)
-//         }
-//         file["File Content"] = data;
-//         stat("file.txt", (err , data) => {
-//             if (err){
-//             console.log(err);
-//             reject(err)
-//         }
-//         file["size"] = data.size;
-//         file["Created At"] = data.birthtimeMs;
-//         resolve(file)
-//         })
-//     })
-// })
-// .then(obj => console.log(obj))
-// .catch(err => console.log(err))
+new Promise((resolve, reject) => {
+    readFile("file.txt", "utf-8", (err , data) => {
+        if (err){
+            console.log(err);
+            reject(err)
+        }
+        file["File Content"] = data;
+        stat("file.txt", (err , data) => {
+            if (err){
+            console.log(err);
+            reject(err)
+        }
+        file["size"] = data.size;
+        file["Created At"] = data.birthtimeMs;
+        resolve(file)
+        })
+    })
+})
+.then(obj => console.log(obj))
+.catch(err => console.log(err))
 
-// // Exercise 2: Directory Files Only
+// Exercise 2: Directory Files Only
 
-// const filesArr = {} 
+const filesArr = {} 
 
-// readdir("../learn_js", (err, files) => {
-//     if (err){
-//         console.log(err)
-//         return
-//     }
-//     files.forEach((file, index) => {
-//         if (path.extname(file) !== ""){
-//             filesArr[`file${index}`] = file;
-//         }
-//     })  
-//     console.log(filesArr);      
-// })
+readdir("../learn_js", (err, files) => {
+    if (err){
+        console.log(err)
+        return
+    }
+    files.forEach((file, index) => {
+        if (path.extname(file) !== ""){
+            filesArr[`file${index}`] = file;
+        }
+    })  
+    console.log(filesArr);      
+})
 
 // Exercise 3: Countdown Timer
 
