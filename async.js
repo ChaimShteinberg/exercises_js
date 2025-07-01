@@ -12,18 +12,26 @@ new Promise((resolve, reject) => {
             reject(err)
         }
         file["File Content"] = data;
-        stat("file.txt", (err , data) => {
-            if (err){
-            console.log(err);
-            reject(err)
-        }
-        file["size"] = data.size;
-        file["Created At"] = data.birthtimeMs;
         resolve(file)
-        })
+        // stat("file.txt", (err , data) => {
+        //     if (err){
+        //     console.log(err);
+        //     reject(err)
+        // }
+        
+        // 
     })
 })
-.then(obj => console.log(obj))
+.then(() => {stat("file.txt", (err , data) => {
+    if (err){
+        console.log(err);
+        reject(err)
+    }
+    file["size"] = data.size;
+        file["Created At"] = data.birthtime.toLocaleDateString();
+        console.log(file)
+    })
+})
 .catch(err => console.log(err))
 
 // Exercise 2: Directory Files Only
