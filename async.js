@@ -13,13 +13,6 @@ new Promise((resolve, reject) => {
         }
         file["File Content"] = data;
         resolve(file)
-        // stat("file.txt", (err , data) => {
-        //     if (err){
-        //     console.log(err);
-        //     reject(err)
-        // }
-        
-        // 
     })
 })
 .then(() => {stat("file.txt", (err , data) => {
