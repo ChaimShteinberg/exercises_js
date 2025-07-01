@@ -1,4 +1,5 @@
 const { readFile, stat, readdir } = require("fs");
+const { freemem } = require("os");
 const path = require("path");
 
 // Exercise 1: File Reader with Stats
@@ -79,3 +80,14 @@ readFile("quotes.txt", "utf-8", (err, data) => {
 })
 
 // Exercise 5: System Free Memory Logger
+
+function getFreeMem(){
+    console.log(`free memory: ${freemem()} %`)
+    return
+}
+const interval = setInterval(getFreeMem, 2000)
+
+setTimeout(() => {
+    clearInterval(interval)
+    console.log("Memory logging complete.")}
+, 11000)
