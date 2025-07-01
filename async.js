@@ -3,29 +3,33 @@ const path = require("path");
 
 // Exercise 1: File Reader with Stats
 
-const file = {}
-
-new Promise((resolve, reject) => {
+const promise1 = new Promise((resolve, reject) => {
     readFile("file.txt", "utf-8", (err , data) => {
         if (err){
             console.log(err);
             reject(err)
         }
-        file["File Content"] = data;
+        const file = {["File Content"]: data};
         resolve(file)
     })
 })
-.then(() => {stat("file.txt", (err , data) => {
-    if (err){
-        console.log(err);
-        reject(err)
-    }
-    file["size"] = data.size;
-        file["Created At"] = data.birthtime.toLocaleDateString();
-        console.log(file)
+.catch(err => console.log(err));
+
+const promise2 = new Promise((resolve, reject) => { 
+    promise1.then((file) => {
+        stat("file.txt", (err , data) => {
+            if (err){
+                console.log(err);
+                reject(err)
+            }
+            file["size"] = data.size;
+            file["Created At"] = data.birthtime.toLocaleDateString();
+            resolve(file)
+        })
     })
 })
-.catch(err => console.log(err))
+.then(file => console.log(file))
+.catch(err => console.log(err));
 
 // Exercise 2: Directory Files Only
 
