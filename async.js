@@ -1,7 +1,7 @@
 const { readFile, stat, readdir } = require("fs");
 const path = require("path");
 
-// Exercise 1: File Reader with Stats
+// // Exercise 1: File Reader with Stats
 
 // const file = {}
 
@@ -13,38 +13,46 @@ const path = require("path");
 //         }
 //         file["File Content"] = data;
 //         stat("file.txt", (err , data) => {
-//         if (err){
+//             if (err){
 //             console.log(err);
 //             reject(err)
 //         }
 //         file["size"] = data.size;
 //         file["Created At"] = data.birthtimeMs;
 //         resolve(file)
-//     })})})
-//     .then(obj => console.log(obj))
-//     .catch(err => console.log(err))
+//         })
+//     })
+// })
+// .then(obj => console.log(obj))
+// .catch(err => console.log(err))
 
-// Exercise 2: Directory Files Only
+// // Exercise 2: Directory Files Only
 
-const filesArr = {} 
+// const filesArr = {} 
 
-readdir("../learn_js", (err, files) => {
-    if (err){
-        console.log(err)
-        return
-    }
-    files.forEach((file, index) => {
-        if (path.extname(file) !== ""){
-            filesArr[`file${index}`] = file;
-        }
-    })  
-    console.log(filesArr);
-      
-})
+// readdir("../learn_js", (err, files) => {
+//     if (err){
+//         console.log(err)
+//         return
+//     }
+//     files.forEach((file, index) => {
+//         if (path.extname(file) !== ""){
+//             filesArr[`file${index}`] = file;
+//         }
+//     })  
+//     console.log(filesArr);      
+// })
 
 // Exercise 3: Countdown Timer
 
+function timer(num = 5){
+    console.log(num);
+    if (num > 0){
+        setTimeout(() => timer(num -= 1), 1000)
+    }    
+}
 
+timer();
 
 // Exercise 4: Random Line from File
 
