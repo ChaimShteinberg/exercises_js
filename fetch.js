@@ -57,11 +57,16 @@ function fetchWithDelay(url, delay) {
             .then(text => console.log(`First 50 chars: ${text.slice(0, 50)}`))
     }, delay);
 }
-fetchWithDelay("https://jsonplaceholder.typicode.com/todos", 2000)
+// fetchWithDelay("https://jsonplaceholder.typicode.com/todos", 2000)
 
 // Exercise 7: Fetch and Show JSON Keys
 
-
+function showKeys(url){
+    fetch(url)
+    .then(result => result.json())
+    .then(json => Object.keys(json))
+}
+showKeys("https://jsonplaceholder.typicode.com/todos")
 
 // Exercise 8: Fetch User, Then Their First Post
 
