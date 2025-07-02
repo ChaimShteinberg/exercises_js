@@ -1,6 +1,6 @@
 // Exercise 1: Get User Data
 
-const getUser = function(userId){
+const getUser = function (userId) {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then(user => user.json())
         .then(user => console.log(`User's name: ${user.name}`))
@@ -9,7 +9,7 @@ const getUser = function(userId){
 
 // Exercise 2: Get Post Details
 
-const getPost = function(postId){
+const getPost = function (postId) {
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(post => post.json())
         .then(post => console.log(`post title: ${post.title}`))
@@ -18,7 +18,7 @@ const getPost = function(postId){
 
 // Exercise 3: Show User's Email
 
-function getUserEmail(userId){
+function getUserEmail(userId) {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then(user => user.json())
         .then(user => console.log(`User's email: ${user.email}`))
@@ -27,7 +27,7 @@ function getUserEmail(userId){
 
 // Exercise 4: List All Todos for a User
 
-function listUserTodos(userId){
+function listUserTodos(userId) {
     fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
         .then(user => user.json())
         .then(user => console.log(`User ${userId} has ${user.length} todos`))
@@ -36,7 +36,7 @@ function listUserTodos(userId){
 
 // Exercise 5: Check if Post Exists (with .catch)
 
-function checkPostExists(postId){
+function checkPostExists(postId) {
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(post => {
             if (!post.ok) throw new Error("");
@@ -45,12 +45,19 @@ function checkPostExists(postId){
         .then(() => console.log("Post exists"))
         .catch(() => console.log("Post not found"))
 }
-checkPostExists(1)
-checkPostExists(101)
+// checkPostExists(1)
+// checkPostExists(101)
 
 // Exercise 6: Delay with Fetch
 
-
+function fetchWithDelay(url, delay) {
+    setTimeout(() => {
+        fetch(url)
+            .then(result => result.text())
+            .then(text => console.log(`First 50 chars: ${text.slice(0, 50)}`))
+    }, delay);
+}
+fetchWithDelay("https://jsonplaceholder.typicode.com/todos", 2000)
 
 // Exercise 7: Fetch and Show JSON Keys
 
