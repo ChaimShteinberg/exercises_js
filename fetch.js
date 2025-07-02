@@ -11,8 +11,8 @@ const getUser = function(userId){
 
 const getPost = function(postId){
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-    .then(post => post.json())
-    .then(post => console.log(`post title: ${post.title}`))
+        .then(post => post.json())
+        .then(post => console.log(`post title: ${post.title}`))
 }
 // getPost(1)
 
@@ -32,11 +32,21 @@ function listUserTodos(userId){
         .then(user => user.json())
         .then(user => console.log(`User ${userId} has ${user.length} todos`))
 }
-listUserTodos(3)
+// listUserTodos(3)
 
 // Exercise 5: Check if Post Exists (with .catch)
 
-
+function checkPostExists(postId){
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        .then(post => {
+            if (!post.ok) throw new Error("");
+            post.json()
+        })
+        .then(() => console.log("Post exists"))
+        .catch(() => console.log("Post not found"))
+}
+checkPostExists(1)
+checkPostExists(101)
 
 // Exercise 6: Delay with Fetch
 
