@@ -23,11 +23,16 @@ function getUserEmail(userId){
         .then(user => user.json())
         .then(user => console.log(`User's email: ${user.email}`))
 }
-getUserEmail(1)
+// getUserEmail(1)
 
 // Exercise 4: List All Todos for a User
 
-
+function listUserTodos(userId){
+    fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+        .then(user => user.json())
+        .then(user => console.log(`User ${userId} has ${user.length} todos`))
+}
+listUserTodos(3)
 
 // Exercise 5: Check if Post Exists (with .catch)
 
