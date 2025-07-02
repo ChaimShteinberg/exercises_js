@@ -1,10 +1,10 @@
-const { readFile}  = require("fs");
+import fs from "fs";
 
 // 1. Read File with Promise
 
-function readFilePromise(path){
+function readFilePromise(path) {
     return new Promise((resolve, reject) => {
-        readFile(path, "utf-8", (err, data) => {
+        fs.readFile(path, "utf-8", (err, data) => {
             if (err) throw new Error("");
             resolve(data)
         })
@@ -15,7 +15,11 @@ readFilePromise("file.txt").then(console.log)
 
 // 2. Async Read File
 
+await function readFileAsync(path){
+    fs.promises.readFile(path, "utf-8")
+}
 
+readFilePromise("file.txt").then(console.log)
 
 // 3. Get File Size
 
