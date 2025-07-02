@@ -35,11 +35,22 @@ async function listFiles(dir){
     return fs.promises.readdir(dir)
 }
 
-listFiles("./").then(console.log)
+// listFiles("./").then(console.log)
 
 // 5. Read Multiple Files in Order
 
+async function readFilesInOrder(files){
+    files.forEach(file => {
+        fs.readFile(file, "utf-8", (err, data) => {
+            if (err){
+                return err
+            }
+            console.log(data)
+        })
+    });
+}
 
+readFilesInOrder(["file.txt", "quotes.txt"]);
 
 // 6. Read Files in Parallel
 
