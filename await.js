@@ -27,11 +27,15 @@ async function getFileSize(path) {
     return (await fs.promises.stat(path)).size
 }
 
-getFileSize("file.txt").then(console.log)
+// getFileSize("file.txt").then(console.log)
 
 // 4. List Files in Directory
 
+async function listFiles(dir){
+    return fs.promises.readdir(dir)
+}
 
+listFiles("./").then(console.log)
 
 // 5. Read Multiple Files in Order
 
