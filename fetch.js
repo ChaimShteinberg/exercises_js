@@ -2,14 +2,20 @@
 
 const getUser = function(userId){
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        .then(result => result.json())
-        .then(result => console.log(`User's name: ${result.name}`))
+        .then(user => user.json())
+        .then(user => console.log(`User's name: ${user.name}`))
 }
-getUser(1)
+// getUser(1)
 
 // Exercise 2: Get Post Details
 
+const getPost = function(postId){
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+    .then(post => post.json())
+    .then(post => console.log(`post title: ${post.title}`))
+}
 
+// getPost(1)
 
 // Exercise 3: Show User's Email
 
