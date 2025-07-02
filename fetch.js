@@ -14,12 +14,16 @@ const getPost = function(postId){
     .then(post => post.json())
     .then(post => console.log(`post title: ${post.title}`))
 }
-
 // getPost(1)
 
 // Exercise 3: Show User's Email
 
-
+function getUserEmail(userId){
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        .then(user => user.json())
+        .then(user => console.log(`User's email: ${user.email}`))
+}
+getUserEmail(1)
 
 // Exercise 4: List All Todos for a User
 
