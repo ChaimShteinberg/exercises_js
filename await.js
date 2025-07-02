@@ -6,24 +6,28 @@ function readFilePromise(path) {
     return new Promise((resolve, reject) => {
         fs.readFile(path, "utf-8", (err, data) => {
             if (err) throw new Error("");
-            resolve(data)
+            resolve(data);
         })
     })
 }
 
-readFilePromise("file.txt").then(console.log)
+// readFilePromise("file.txt").then(console.log);
 
 // 2. Async Read File
 
-await function readFileAsync(path){
-    fs.promises.readFile(path, "utf-8")
+async function readFileAsync(path) {
+    return fs.promises.readFile(path, "utf-8");
 }
 
-readFilePromise("file.txt").then(console.log)
+// readFileAsync("file.txt").then(console.log);
 
 // 3. Get File Size
 
+async function getFileSize(path) {
+    return (await fs.promises.stat(path)).size
+}
 
+getFileSize("file.txt").then(console.log)
 
 // 4. List Files in Directory
 
